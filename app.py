@@ -2,11 +2,8 @@ import gradio as gr
 import numpy as np
 from keras.preprocessing import image
 from Model_Load import load_model_from_files
-<<<<<<< HEAD
-=======
 from description import description
 
->>>>>>> 45c9f04 (Memperbaiki dan menyinkronkan HistoryLens)
 
 # Load model dan label
 model = load_model_from_files("model.json", "my_model.h5")
@@ -28,9 +25,6 @@ def classify_image(img):
     confidence = np.max(pred)
     predicted_label = labels[np.argmax(pred)]
 
-<<<<<<< HEAD
-    return f"{predicted_label} (Confidence: {confidence * 100:.2f}%)"
-=======
     if confidence < 0.5:
         return "Tidak dapat dikenali", "Tolong arahkan ke objek yang jelas agar bisa diidentifikasikan. Pastikan anda berada di salah satu tempat Benteng_Vredeburg Candi_Borobudur, Candi_Prambanan, Gedung_Agung_Istana_Kepresidenan_Yogyakarta, Masjid_Gedhe_Kauman, Monumen_Serangan_1Maret, Museum_Gunungapi_Merapi, Situs_Ratu_Boko, Taman_Sari, Tugu_Yogyakarta"
     else:
@@ -40,19 +34,10 @@ def classify_image(img):
 
 
 
->>>>>>> 45c9f04 (Memperbaiki dan menyinkronkan HistoryLens)
 
 # Buat antarmuka Gradio
 demo = gr.Interface(
     fn=classify_image,
-<<<<<<< HEAD
-    inputs=gr.Image(type="pil"),
-    outputs="text",
-    title="Klasifikasi Cagar Budaya DIY",
-    description="Upload gambar dan model akan mengklasifikasikannya ke dalam salah satu situs budaya di Yogyakarta."
-)
-
-=======
     inputs=gr.Image(type="pil", label="Upload Gambar"),
     outputs=[
         gr.Textbox(label="Output Klasifikasi"),
@@ -64,7 +49,6 @@ demo = gr.Interface(
 )
 
 
->>>>>>> 45c9f04 (Memperbaiki dan menyinkronkan HistoryLens)
 # Launch untuk Hugging Face Spaces
 if __name__ == "__main__":
     demo.launch()
